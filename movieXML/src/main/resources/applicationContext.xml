@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+    http://www.springframework.org/schema/beans/spring-beans.xsd
+    http://www.springframework.org/schema/context
+    http://www.springframework.org/schema/context/spring-context.xsd">
+
+	<bean id="movieRepo"
+		  class="by.itechart.movie.repository.DbMovieRepository">
+		<constructor-arg>
+			<list>
+				<ref bean="el1"/>
+				<ref bean="el2"/>
+				<ref bean="el3"/>
+			</list>
+		</constructor-arg>
+	</bean>
+
+	<bean id="report"
+		  class="by.itechart.movie.service.MovieReport">
+		<constructor-arg ref="movieRepo"/>
+	</bean>
+
+	<bean id="el1" class="by.itechart.movie.model.Movie">
+		<property name="name" value="Matrix"/>
+		<property name="genre" value="fantasy"/>
+	</bean>
+	<bean id="el2" class="by.itechart.movie.model.Movie">
+		<property name="name" value="Robocop"/>
+		<property name="genre" value="action"/>
+	</bean>
+	<bean id="el3" class="by.itechart.movie.model.Movie">
+		<property name="name" value="Terminator"/>
+		<property name="genre" value="action"/>
+	</bean>
+
+</beans>
+
+
+
+
+
